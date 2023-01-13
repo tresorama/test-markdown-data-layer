@@ -1,8 +1,8 @@
 import { readdirSync, readFileSync } from "fs";
 import path from "path";
 import matter from 'gray-matter';
-import { marked } from "marked";
-import { capitalize } from "@/utils/blog/utils.string";
+import { parseMarkdownIntoHTMLString } from "./utils.markdown";
+import { capitalize } from "./utils.string";
 
 const getBlogDirPath = () => path.resolve(process.cwd(), "./src/blog-contents");
 export const getAllBlogPostSlugs = () => readdirSync(getBlogDirPath()).map(filename => filename.replace('.md', ''));
@@ -20,7 +20,7 @@ export const getBlogPostBySlug = (slug: string): BlogPost => {
   const file = getBlogPostFileBySlug(slug);
   const metadata = matter(file.toString());
   const markdownAsString = metadata.content;
-  const markdownAsHTMLString = marked(markdownAsString);
+  const markdownAsHTMLString = parseMarkdownIntoHTMLString(markdownAsString);
   return {
     slug,
     title: metadata.data.title ?? capitalize(slug.replaceAll('-', ' ')),
