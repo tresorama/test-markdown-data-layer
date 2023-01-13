@@ -1,3 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .text-underline-animated {
+    @apply relative after:absolute after:top-full after:left-0 after:w-[100%] after:h-[1px] after:bg-current after:transition-transform after:origin-left after:scale-x-0 after:hover:scale-x-100;
+  }
+
+  .bg-gradient-base {
+    background-image: 
+      radial-gradient(circle at -100% 51%, hsl(67, 100%, 50%) 51%, hsl(302, 100%, 50%) 100%), 
+      radial-gradient(circle at -100% 51%, hsl(67, 100%, 50%) 79%, hsl(302, 100%, 50%) 100%);
+    background-size: 
+      80% 20%, 
+      68% 20%;
+    background-position: 
+      100% 100%,
+      100% 75%;
+    background-repeat: 
+      no-repeat,
+      no-repeat;
+  }
+
+  .bg-gradient-bar-fade--top {
+    background-image: linear-gradient(to bottom, white 25%, transparent);
+  }
+}
+
+@layer components {
+  .blogpost-title {
+    @apply font-normal text-7xl;
+  }
+  .blogpost-prose {
+    @apply tracking-wide;
+    @apply prose;
+    @apply prose-xl;
+    @apply prose-pink;
+    @apply prose-h1:font-medium;
+    @apply prose-h2:font-medium;
+  }
+}

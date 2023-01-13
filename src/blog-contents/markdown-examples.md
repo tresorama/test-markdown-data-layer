@@ -2,13 +2,11 @@
 title: Markdown Example
 ---
 
-# Gist markdown examples
-
 A collection of Markdown code and tricks that were tested to work in Gist.
 
 This and all public gists in https://gist.github.com/ww9 are [Public Domain](https://en.wikipedia.org/wiki/Public_domain_equivalent_license). Do whatever you want with it including , no need to credit me.
 
-### Todo
+## Todo
 
 - Reformat this whole document and assimilate these:
   - https://gist.github.com/jonschlinkert/5854601
@@ -20,7 +18,7 @@ This and all public gists in https://gist.github.com/ww9 are [Public Domain](htt
   - https://guides.github.com/features/mastering-markdown/
   - https://gist.github.com/cyhsutw/d5983d166fb70ff651f027b2aa56ee4e#file-mathjax-ipynb (Python notebook, Math syntax)
 
-##### Table of Contents  
+#### Table of Contents  
 [Headers](#headers)
 [Emphasis](#emphasis)
 [Lists](#lists)
@@ -37,7 +35,7 @@ This and all public gists in https://gist.github.com/ww9 are [Public Domain](htt
 
 
 
-### Task lists
+## Task lists
 
 ```markdown
 - [x] Task 1
@@ -51,7 +49,7 @@ Result:
 - [ ] Task 2
 - [ ] Task 3
 
-### Collapsible content (spoilers)
+## Collapsible content (spoilers)
 
 <details><summaryClick me to expand</summary>
 
@@ -61,8 +59,6 @@ Content between &lt;details&gt; and &lt;/details&gt; is hidden. You need to [esc
 print("hello world!")
 ```
 </details>
-
-<a name="headers"/>
 
 ## Headers
 
@@ -98,8 +94,6 @@ Alt-H1
 Alt-H2
 ------
 
-<a name="emphasis"/>
-
 ## Emphasis
 
 ```no-highlight
@@ -120,8 +114,6 @@ Combined emphasis with **asterisks and _underscores_**.
 
 Strikethrough uses two tildes. ~~Scratch this.~~
 
-
-<a name="lists"/>
 
 ## Lists
 
@@ -152,8 +144,6 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 * Unordered list can use asterisks
 - Or minuses
 + Or pluses
-
-<a name="links"/>
 
 ## Links
 
@@ -197,8 +187,6 @@ Some text to show that the reference links can follow later.
 [1]: http://slashdot.org
 [link text itself]: http://www.reddit.com
 
-<a name="images"/>
-
 ## Images
 
 ```no-highlight
@@ -222,8 +210,6 @@ Reference-style:
 ![alt text][logo]
 
 [logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 2"
-
-<a name="code"/>
 
 ## Code and Syntax Highlighting
 
@@ -272,8 +258,6 @@ But let's throw in a <b>tag</b>.
 
 Again, to see what languages are available for highlighting, and how to write those language names, see the [highlight.js demo page](http://softwaremaniacs.org/media/soft/highlight/test.html).
 
-<a name="tables"/>
-
 ## Tables
 
 Tables aren't part of the core Markdown spec, but they are part of GFM and *Markdown Here* supports them. They are an easy way of adding tables to your email -- a task that would otherwise require copy-pasting from another application.
@@ -310,8 +294,6 @@ Markdown | Less | Pretty
 *Still* | `renders` | **nicely**
 1 | 2 | 3
 
-<a name="blockquotes"/>
-
 ## Blockquotes
 
 ```no-highlight
@@ -329,8 +311,6 @@ Quote break.
 Quote break.
 
 > This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
-
-<a name="html"/>
 
 ## Inline HTML
 
@@ -353,8 +333,6 @@ You can also use raw HTML in your Markdown, and it'll mostly work pretty well.
   <dt>Markdown in HTML</dt>
   <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
-
-<a name="hr"/>
 
 ## Horizontal Rule
 
@@ -388,8 +366,6 @@ ___
 
 Underscores
 
-<a name="lines"/>
-
 ## Line Breaks
 
 My basic recommendation for learning how line breaks work is to experiment and discover -- hit &lt;Enter&gt; once (i.e., insert one newline), then hit it twice (i.e., insert two newlines), see what happens. You'll soon learn to get what you want. "Markdown Toggle" is your friend. 
@@ -414,8 +390,6 @@ This line is only separated by a single newline, so it's a separate line in the 
 
 (Technical note: *Markdown Here* uses GFM line breaks, so there's no need to use MD's two-space line breaks.)
 
-<a name="videos"/>
-
 ## YouTube Videos
 
 They can't be added directly but you can add an image with a link to the video like this:
@@ -431,8 +405,6 @@ Or, in pure Markdown, but losing the image sizing and border:
 ```no-highlight
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](http://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
 ```
-
-<a name="tex"/>
 
 ## TeX Mathematical Formulae
 
