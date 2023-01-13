@@ -43,6 +43,9 @@ export const parseMarkdownIntoHTMLString = (markdown: string) => {
   marked.setOptions({
     langPrefix: "hljs language-",
     highlight: (code, lang) => {
+      // ensure a language is present
+      if (lang === "") lang = "plaintext";
+      // parse
       try {
         return hljs.highlight(code, { language: lang }).value;
       } catch (error) {
