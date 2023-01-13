@@ -18,22 +18,23 @@ This and all public gists in https://gist.github.com/ww9 are [Public Domain](htt
   - https://guides.github.com/features/mastering-markdown/
   - https://gist.github.com/cyhsutw/d5983d166fb70ff651f027b2aa56ee4e#file-mathjax-ipynb (Python notebook, Math syntax)
 
-#### Table of Contents  
-[Headers](#headers)
-[Emphasis](#emphasis)
-[Lists](#lists)
-[Links](#links)
-[Images](#images)
-[Code and Syntax Highlighting](#code-and-syntax-highlighting)
-[Tables](#tables)
-[Blockquotes](#blockquotes)
-[Inline HTML](#html)
-[Horizontal Rule](#hr)
-[Line Breaks](#lines)
-[YouTube Videos](#videos)
-[TeX Mathematical Formulae](#tex)
+## Table of Contents  
 
-
+[Task List / To Do List](#task-lists)  
+[Collapsible content](#collapsible-content-spoilers)  
+[Headers](#headers)  
+[Emphasis](#emphasis)  
+[Lists](#lists)  
+[Links](#links)  
+[Images](#images)  
+[Code and Syntax Highlighting](#code-and-syntax-highlighting)  
+[Tables](#tables)  
+[Blockquotes](#blockquotes)  
+[Inline HTML](#inline-html)  
+[Horizontal Rule](#horizontal-rule)  
+[Line Breaks](#line-breaks)  
+[YouTube Videos](#youtube-videos)  
+[TeX Mathematical Formulae](#tex-mathematical-formulae)  
 
 ## Task lists
 
@@ -51,7 +52,8 @@ Result:
 
 ## Collapsible content (spoilers)
 
-<details><summaryClick me to expand</summary>
+<details>
+<summary>Click me to expand</summary>
 
 Content between &lt;details&gt; and &lt;/details&gt; is hidden. You need to [escape HTML](https://www.freeformatter.com/html-escape.html) tags them.
   
@@ -114,7 +116,6 @@ Combined emphasis with **asterisks and _underscores_**.
 
 Strikethrough uses two tildes. ~~Scratch this.~~
 
-
 ## Lists
 
 ```no-highlight
@@ -134,11 +135,10 @@ Strikethrough uses two tildes. ~~Scratch this.~~
 
 1. First ordered list item
 2. Another item
-  * Unordered sub-list. 
+  * Unordered sub-list.
 1. Actual numbers don't matter, just that it's a number
   1. Ordered sub-list
-4. And another item.  
-   
+2. And another item.  
    Some text that should be aligned with the above item.
 
 * Unordered list can use asterisks
@@ -227,12 +227,12 @@ Blocks of code are either fenced by lines with three back-ticks <code>```</code>
 var s = "JavaScript syntax highlighting";
 alert(s);
 ```
- 
+
 ```python
 s = "Python syntax highlighting"
 print s
 ```
- 
+
 ```
 No language indicated, so no syntax highlighting. 
 But let's throw in a &lt;b&gt;tag&lt;/b&gt;.
