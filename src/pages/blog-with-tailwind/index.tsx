@@ -3,22 +3,20 @@ import { GetStaticProps, NextPage } from "next";
 import { BlogPost, getAllBlogPosts } from "@/utils/blog";
 import { BlogView } from "@/views/blog/blog-view";
 
+type BlogPostWithLink = BlogPost & { url: string; };
 export type PageProps = {
-  blogPostsLinks: {
-    title: BlogPost['title'],
-    url: string,
-  }[];
+  blogPostsWithLink: BlogPostWithLink[];
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const blogPosts = getAllBlogPosts();
-  const blogPostsLinks: PageProps['blogPostsLinks'] = blogPosts.map(blogPost => ({
-    title: blogPost.title,
+  const blogPostsWithLink: BlogPostWithLink[] = blogPosts.map(blogPost => ({
+    ...blogPost,
     url: `/blog-with-tailwind/${blogPost.slug}`,
   }));
 
   return {
-    props: { blogPostsLinks }
+    props: { blogPostsWithLink }
   };
 };
 

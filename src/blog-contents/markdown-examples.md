@@ -1,5 +1,11 @@
 ---
 title: Markdown Example
+coverImage: '/assets/blog/dynamic-routing/cover.jpg'
+date: '2022-08-27T05:35:07.322Z'
+author:
+  name: Jacopo Marrone
+  picture: '/assets/blog/authors/jj.jpeg'
+excerpt: 'A collection of Markdown syntax, code and tricks that were tested to work in Gist'
 ---
 
 A collection of Markdown code and tricks that were tested to work in Gist.

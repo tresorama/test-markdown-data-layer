@@ -8,6 +8,13 @@ const blogPostSchema = z.object({
   contentAsHTMLString: z.string(),
 }).extend({
   /* Add here your front-matter markdown custom fields */
+  excerpt: z.string(),
+  coverImage: z.string(),
+  date: z.string().datetime(),
+  author: z.object({
+    name: z.string(),
+    picture: z.string(),
+  }),
 });
 
 export type BlogPost = z.infer<typeof blogPostSchema>;
