@@ -4,20 +4,13 @@ import matter from 'gray-matter';
 import { parseMarkdownIntoHTMLString } from "./utils.markdown";
 import { BlogPost, validateBlogPostOrThrow } from "./blog.schema";
 import { capitalize } from "./utils.string";
+import { sortByDateDescending } from "@/utils/blog/utils.sort";
+
 export { type BlogPost };
 
 const getBlogDirPath = () => path.resolve(process.cwd(), "./src/blog-contents");
 export const getAllBlogPostSlugs = () => readdirSync(getBlogDirPath()).map(filename => filename.replace('.md', ''));
 const getBlogPostFileBySlug = (slug: string) => readFileSync(`${getBlogDirPath()}/${slug}.md`);
-
-export type BlogPost = {
-  slug: string,
-  title: string,
-  content: {
-    markdownAsHTMLString: string,
-  },
-};
-
 export const getBlogPostBySlug = (slug: string): BlogPost => {
   const file = getBlogPostFileBySlug(slug);
   const metadata = matter(file.toString());
@@ -39,5 +32,6 @@ export const getBlogPostBySlug = (slug: string): BlogPost => {
 };
 export const getAllBlogPosts = (): BlogPost[] => {
   const slugs = getAllBlogPostSlugs();
-  return slugs.map(getBlogPostBySlug);
+  const blogPosts = slugs.map(getBlogPostBySlug);
+  return blogPosts.sort((a, b) => sortByDateDescending(a.date, b.date));
 };
