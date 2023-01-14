@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+![Preview](/README.repo-preview.png)
 
-First, run the development server:
+## Demo
 
+[View Demo](https://test-next-blog-flat-file.vercel.app/)
+
+## Overview
+
+When you are initializing the project you:
+- Define your blog post front-matter custom fields schema
+- Code in React to customize appearance.
+
+When you have a new blogpost to add:
+- Create a new `.md` file inside a specific folder.
+- Re-Deploy
+
+## Stack
+
+- Next.js
+- Markdown in Git repo
+- Tailwind CSS
+
+## Usage - Dev
+
+Install deps
 ```bash
-npm run dev
+yarn
 # or
-yarn dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Start development server
+```bash
+yarn dev
+# or
+npm run dev
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Open http://localhost:3000  
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Code
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Usage - Deploy
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Install deps.
+```bash
+yarn 
+# or 
+npm install
+```
 
-## Learn More
+Compile the app.
+```bash
+yarn build 
+# or 
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Run the app.
+```bash
+yarn start 
+# or 
+npm run start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Customize
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+All your blogposts are flat files in `src/blog-contents`.
+Front-matter is enabled and some custom fields are there as starting point, but you are free make your changes.
 
-## Deploy on Vercel
+### Customize BlogPost fields
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Edit the zod schema.
+Some required fields cannot be deleted or edited, check comments.  
+> NOTE: the zod schema is also used to validate every blogposts during build, to be sure you don't forget some fields when you are creating a new blog post.
+```ts
+// src/utils/blog/blog.schema.ts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+const blogPostSchema = z.object({
+  /** These fields are required! Don't edit unless you know what you are doing */
+  slug: z.string(),
+  title: z.string(),
+  contentAsHTMLString: z.string(),
+}).extend({
+  /* Add here your front-matter markdown custom fields */
+  excerpt: z.string(),
+  coverImage: z.string(),
+  date: z.string().datetime(),
+  author: z.object({
+    name: z.string(),
+    picture: z.string(),
+  }),
+});
+
+```
+
+Now thanks to typescript, your React views receive blogposts that are typesafe.
+
+## Resources
+
+[Next.js](https://nextjs.org/)
