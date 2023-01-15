@@ -1,7 +1,17 @@
 {
-  "name": "test-next-blog-flat-file",
-  "version": "0.1.0",
+  "name": "starter-next-blog",
   "private": true,
+  "version": "0.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Jacopo Marrone",
+    "email": "jacopo.marrone27@gmail.com",
+    "url": "https://github.com/tresorama"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tresorama/starter-next-blog.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
