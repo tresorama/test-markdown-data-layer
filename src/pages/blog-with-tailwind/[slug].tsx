@@ -8,7 +8,7 @@ type PathParams = {
 };
 
 export const getStaticPaths: GetStaticPaths<PathParams> = async () => {
-  const slugs = getAllBlogPostSlugs();
+  const slugs = await getAllBlogPostSlugs();
   return {
     paths: slugs.map(slug => ({ params: { slug } })),
     fallback: false,
@@ -21,7 +21,8 @@ export type PageProps = {
 
 export const getStaticProps: GetStaticProps<PageProps, PathParams> = async ({ params }) => {
   const { slug } = params!;
-  const blogPost = getBlogPostBySlug(slug);
+  const blogPost = await getBlogPostBySlug(slug);
+  if (!blogPost) return { notFound: true };
 
   return {
     props: { blogPost }
@@ -29,12 +30,12 @@ export const getStaticProps: GetStaticProps<PageProps, PathParams> = async ({ pa
 };
 
 
-const Page: NextPage<PageProps> = ({ blogPost }) => (
+const Page: NextPage<PageProps> = (pageProps) => (
   <>
     <Head>
-      <title>{`${blogPost.title} - Blog`}</title>
+      <title>{`${pageProps.blogPost.title} - Blog`}</title>
     </Head>
-    <BlogPostView blogPost={blogPost} />
+    <BlogPostView {...pageProps} />
   </>
 );
 

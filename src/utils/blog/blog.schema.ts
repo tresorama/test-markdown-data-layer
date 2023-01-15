@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Logger } from "./utils.logger";
+import { Logger } from "./utils/utils.logger";
 
 const blogPostSchema = z.object({
   /** Thrse fields are required! Don't edit unless you know what you are doing */
@@ -9,11 +9,11 @@ const blogPostSchema = z.object({
 }).extend({
   /* Add here your front-matter markdown custom fields */
   excerpt: z.string(),
-  coverImage: z.string(),
+  coverImage: z.string().nullable(),
   date: z.string().datetime(),
   author: z.object({
     name: z.string(),
-    picture: z.string(),
+    picture: z.string().nullable(),
   }),
 });
 

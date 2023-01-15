@@ -39,7 +39,7 @@ import hljs from 'highlight.js';
 //   return markdownAsHTMLString;
 // };
 
-export const parseMarkdownIntoHTMLString = (markdown: string) => {
+export const compileMarkdownToHTMLString = (markdown: string) => {
   marked.setOptions({
     langPrefix: "hljs language-",
     highlight: (code, lang) => {

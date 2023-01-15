@@ -9,7 +9,7 @@ export type PageProps = {
 };
 
 export const getStaticProps: GetStaticProps<PageProps> = async () => {
-  const blogPosts = getAllBlogPosts();
+  const blogPosts = await getAllBlogPosts();
   const blogPostsWithLink: BlogPostWithLink[] = blogPosts.map(blogPost => ({
     ...blogPost,
     url: `/blog-with-tailwind/${blogPost.slug}`,
