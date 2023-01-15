@@ -3,6 +3,7 @@ import { PageProps } from "@/pages/blog-with-tailwind/[slug]";
 import { AppShell } from "@/views/shared/components/app-shell";
 import { BackButtonBar } from "@/views/shared/components/back-button-bar";
 import { Footer } from "@/views/shared/components/footer";
+import 'highlight.js/styles/github-dark-dimmed.css'; //This is the theme your code is going to be displayed with.
 
 const formatDate = (date: Date | string) => new Date(date).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: '2-digit' });
 
