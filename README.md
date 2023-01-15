@@ -110,13 +110,12 @@ Now thanks to typescript, your React views receive blogposts that are typesafe.
 
 ### 2. Decide which datasource you want to use
 
-#### Overview
+#### 2.1 Overview
 
-As an overview, all datasource are subfolder of `src/utils/blog/db`.  
-In `src/utils/blog/blog.datasource` you must export the desired datasource.  
-`src/utils/blog/index` will import from `src/utils/blog/blog.datasource`.  
+Every datasource is a subdirectory of `src/utils/blog/db` with an `index.ts`.  
+In `src/utils/blog/blog.datasource` you must export the desired datasource that will be imported in `src/utils/blog/index`.  
 
-#### Setup
+#### 2.3 Setup
 
 Uncomment your desired line.  
 The file must have only one `db` export.  
@@ -134,19 +133,13 @@ export { notionDB as db } from "./db/notion";
 
 Follow additional configuration based on datasource
 
-[with FlatFile](/src/utils/blog/db//falt-file/README.md)
-[with Notion](/src/utils/blog/db//notion/README.md)
+[with FlatFile](/src/utils/blog/db//falt-file/README.md)  
+[with Notion](/src/utils/blog/db//notion/README.md)  
 
 ### 3.Code in React to customize appearance
 
 You know how to do it 😜.  
 Pages are in `src/pages` and components used in pages are in `src/views`.
-
-## Customize
-
-All your blogposts are flat files in `src/blog-contents`.
-Front-matter is enabled and some custom fields are there as starting point, but you are free make your changes.
-
 
 ## Resources
 [Next.js](https://nextjs.org/)
