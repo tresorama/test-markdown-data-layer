@@ -8,18 +8,25 @@
 ## Overview
 
 When you are initializing the project you:
-- Define your blog post front-matter custom fields schema
+- Decide "BlogPost" custom fields schema for your and configure it.
+- Decide which datasource you want to use , and from which fetch blogposts, between
+  - Flat File on Disk (.md)
+  - Notion
 - Code in React to customize appearance.
 
 When you have a new blogpost to add:
-- Create a new `.md` file inside a specific folder.
+- Create a new blog post based on datasource
+  - FlatFile: Create a new `.md` file inside a specific folder.
+  - Notion: Create a new Notion record/page in your Database
 - Re-Deploy
 
 ## Stack
 
 - Next.js
-- Markdown in Git repo
 - Tailwind CSS
+- DB (one of these)
+  - Flat File on Disk (.md)
+  - Notion
 
 ## Usage - Dev
 
@@ -64,12 +71,16 @@ yarn start
 npm run start
 ```
 
-## Customize
+## Bootstrap the project
 
-All your blogposts are flat files in `src/blog-contents`.
-Front-matter is enabled and some custom fields are there as starting point, but you are free make your changes.
+When you are initializing the project you:
+1. Decide "BlogPost" custom fields schema for your and configure it.
+2. Decide which datasource you want to use , and from which fetch blogposts, between
+  - Flat File on Disk (.md)
+  - Notion
+3. Code in React to customize appearance.
 
-### Customize BlogPost fields
+### 1. Decide "BlogPost" custom fields schema
 
 Edit the zod schema.
 Some required fields cannot be deleted or edited, check comments.  
@@ -97,6 +108,45 @@ const blogPostSchema = z.object({
 
 Now thanks to typescript, your React views receive blogposts that are typesafe.
 
-## Resources
+### 2. Decide which datasource you want to use
 
+#### Overview
+
+As an overview, all datasource are subfolder of `src/utils/blog/db`.  
+In `src/utils/blog/blog.datasource` you must export the desired datasource.  
+`src/utils/blog/index` will import from `src/utils/blog/blog.datasource`.  
+
+#### Setup
+
+Uncomment your desired line.  
+The file must have only one `db` export.  
+
+```ts
+// src/utils/blog/blog.datasource
+
+// When using Flat File
+export { flatFileDB as db } from "./db/flat-file";
+
+// When using Notion
+export { notionDB as db } from "./db/notion";
+
+```
+
+Follow additional configuration based on datasource
+
+[with FlatFile](/src/utils/blog/db//falt-file/README.md)
+[with Notion](/src/utils/blog/db//notion/README.md)
+
+### 3.Code in React to customize appearance
+
+You know how to do it 😜.  
+Pages are in `src/pages` and components used in pages are in `src/views`.
+
+## Customize
+
+All your blogposts are flat files in `src/blog-contents`.
+Front-matter is enabled and some custom fields are there as starting point, but you are free make your changes.
+
+
+## Resources
 [Next.js](https://nextjs.org/)
