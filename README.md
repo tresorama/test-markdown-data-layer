@@ -133,8 +133,8 @@ export { notionDB as db } from "./db/notion";
 
 Follow additional configuration based on datasource
 
-[with FlatFile](/src/utils/blog/db//falt-file/README.md)  
-[with Notion](/src/utils/blog/db//notion/README.md)  
+[with FlatFile](/src/utils/blog/db/flat-file/README.md)  
+[with Notion](/src/utils/blog/db/notion/README.md)  
 
 ### 3.Code in React to customize appearance
 
