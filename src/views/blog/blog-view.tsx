@@ -1,4 +1,4 @@
-import { PageProps } from "@/pages/blog-with-tailwind/index";
+import { PageProps } from "@/pages/blog/index";
 import { AppShell } from "@/views/shared/components/app-shell";
 import { BackButtonBar } from "@/views/shared/components/back-button-bar";
 import { BgGradientBase } from "@/views/shared/components/bg-gradient-base";

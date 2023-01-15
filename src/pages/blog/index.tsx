@@ -12,7 +12,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async () => {
   const blogPosts = await getAllBlogPosts();
   const blogPostsWithLink: BlogPostWithLink[] = blogPosts.map(blogPost => ({
     ...blogPost,
-    url: `/blog-with-tailwind/${blogPost.slug}`,
+    url: `/blog/${blogPost.slug}`,
   }));
 
   return {

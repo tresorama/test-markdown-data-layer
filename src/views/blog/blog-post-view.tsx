@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { PageProps } from "@/pages/blog-with-tailwind/[slug]";
+import { PageProps } from "@/pages/blog/[slug]";
 import { AppShell } from "@/views/shared/components/app-shell";
 import { BackButtonBar } from "@/views/shared/components/back-button-bar";
 import { Footer } from "@/views/shared/components/footer";
