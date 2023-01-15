@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { BlogPost, getAllBlogPostSlugs, getBlogPostBySlug } from "@/utils/blog";
+import { BlogPost, getAllBlogPostSlugs, getBlogPostBySlug, getNextBlogPostBySlug, getPrevBlogPostBySlug } from "@/utils/blog";
 import { BlogPostView } from "@/views/blog/blog-post-view";
 
 type PathParams = {
@@ -15,8 +15,11 @@ export const getStaticPaths: GetStaticPaths<PathParams> = async () => {
   };
 };
 
+type BlogPostWithLink = BlogPost & { url: string; };
 export type PageProps = {
   blogPost: BlogPost;
+  prevBlogPostWithLink: BlogPostWithLink | null,
+  nextBlogPostWithLink: BlogPostWithLink | null,
 };
 
 export const getStaticProps: GetStaticProps<PageProps, PathParams> = async ({ params }) => {
@@ -24,8 +27,17 @@ export const getStaticProps: GetStaticProps<PageProps, PathParams> = async ({ pa
   const blogPost = await getBlogPostBySlug(slug);
   if (!blogPost) return { notFound: true };
 
+  const prevBlogPost = await getPrevBlogPostBySlug(slug);
+  const prevBlogPostWithLink: null | BlogPostWithLink = prevBlogPost
+    ? { ...prevBlogPost, url: `/blog/${prevBlogPost.slug}` }
+    : null;
+  const nextBlogPost = await getNextBlogPostBySlug(slug);
+  const nextBlogPostWithLink: null | BlogPostWithLink = nextBlogPost
+    ? { ...nextBlogPost, url: `/blog/${nextBlogPost.slug}` }
+    : null;
+
   return {
-    props: { blogPost }
+    props: { blogPost, prevBlogPostWithLink, nextBlogPostWithLink },
   };
 };
 
