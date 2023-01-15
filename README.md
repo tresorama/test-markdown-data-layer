@@ -3,7 +3,7 @@
 
 ## Demo
 
-[View Demo](https://test-next-blog-flat-file.vercel.app/)
+[View Demo](https://starter-next-blog.vercel.app/)
 
 ## Overview
 
