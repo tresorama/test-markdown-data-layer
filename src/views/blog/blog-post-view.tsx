@@ -26,16 +26,16 @@ export const BlogPostView = ({ blogPost, prevBlogPostWithLink, nextBlogPostWithL
           />
         </main>
         <nav className="pt-48 pb-20 px-8 w-full max-w-3xl mx-auto flex flex-wrap gap-12">
-          {prevBlogPostWithLink && (
-            <div className="max-w-[10ch] text-3xl">
-              <span className="block text-sm font-light">Previous</span>
-              <Link href={prevBlogPostWithLink.url}>{prevBlogPostWithLink.title}</Link>
+          {nextBlogPostWithLink && (
+            <div className="max-w-[18ch] text-3xl text-left">
+              <span className="block text-sm font-light">Older Post</span>
+              <Link href={nextBlogPostWithLink.url}>{nextBlogPostWithLink.title}</Link>
             </div>
           )}
-          {nextBlogPostWithLink && (
-            <div className="ml-auto max-w-[20ch] w-auto text-3xl text-right">
-              <span className="block text-sm font-light">Next</span>
-              <Link href={nextBlogPostWithLink.url}>{nextBlogPostWithLink.title}</Link>
+          {prevBlogPostWithLink && (
+            <div className="ml-auto max-w-[18ch] text-3xl text-right">
+              <span className="block text-sm font-light">Newer Post</span>
+              <Link href={prevBlogPostWithLink.url}>{prevBlogPostWithLink.title}</Link>
             </div>
           )}
         </nav>
