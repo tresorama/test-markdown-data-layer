@@ -12,7 +12,7 @@ export const HomeView = () => (
           <main className="py-20 px-8">
             <ul className='space-y-6'>
               {[
-                ['/blog-with-tailwind', "Blog with Tailwind"],
+                ['/blog', "Blog"],
                 // ['/blog-with-chakra', "Blog with Chakra"],
               ].map(([url, label]) => (
                 <li key={url} className='text-8xl lg:text-9xl font-normal underline'>
