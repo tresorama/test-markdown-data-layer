@@ -61,14 +61,24 @@ const _lastNavigationEvent = {
 
 export const useScrollRestoration = () => {
   useEffect(() => {
-    type NextEventHandler = Parameters<NextRouter['events']['on']>[1];
 
     // Router.events.on handlers
-    const beforeHistoryChange: NextEventHandler = (newUrl, options) => {
-    };
-    const hashChangeComplete: NextEventHandler = (newUrl, options) => {
-    };
-    const hashChangeStart: NextEventHandler = (newUrl, options) => {
+    type NextEventHandler = Parameters<NextRouter['events']['on']>[1];
+    // const beforeHistoryChange: NextEventHandler = (newUrl, options) => {
+    // };
+    // const hashChangeComplete: NextEventHandler = (newUrl, options) => {
+    // };
+    // const hashChangeStart: NextEventHandler = (newUrl, options) => {
+    // };
+    // const routeChangeError: NextEventHandler = (newUrl, options) => {
+    // };
+    const routeChangeStart: NextEventHandler = (newUrl, options) => {
+      // Note:
+      // this handler is invoked BEFORE transitioning to new page/route, 
+      // (<Link> click or router.push() ) start the transition
+
+      const oldUrl = Router.asPath;
+      _pagesScrollPosition.persistScrollPositionSnapshot(oldUrl);
     };
     const routeChangeComplete: NextEventHandler = (newUrl, options) => {
       // Note:
@@ -80,16 +90,6 @@ export const useScrollRestoration = () => {
         _pagesScrollPosition.scrollToTop();
       }
       _lastNavigationEvent.forget();
-    };
-    const routeChangeError: NextEventHandler = (newUrl, options) => {
-    };
-    const routeChangeStart: NextEventHandler = (newUrl, options) => {
-      // Note:
-      // this handler is invoked BEFORE transitioning to new page/route, 
-      // (<Link> click or router.push() ) start the transition
-
-      const oldUrl = Router.asPath;
-      _pagesScrollPosition.persistScrollPositionSnapshot(oldUrl);
     };
 
     // Router.beforePopState
@@ -112,21 +112,21 @@ export const useScrollRestoration = () => {
       delete event['returnValue'];
     };
 
-    Router.events.on('beforeHistoryChange', beforeHistoryChange);
-    Router.events.on('hashChangeComplete', hashChangeComplete);
-    Router.events.on('hashChangeStart', hashChangeStart);
-    Router.events.on('routeChangeComplete', routeChangeComplete);
-    Router.events.on('routeChangeError', routeChangeError);
+    // Router.events.on('beforeHistoryChange', beforeHistoryChange);
+    // Router.events.on('hashChangeComplete', hashChangeComplete);
+    // Router.events.on('hashChangeStart', hashChangeStart);
+    // Router.events.on('routeChangeError', routeChangeError);
     Router.events.on('routeChangeStart', routeChangeStart);
+    Router.events.on('routeChangeComplete', routeChangeComplete);
     Router.beforePopState(beforePopState);
     window.addEventListener('beforeunload', onWindowBeforeUnload);
     return () => {
-      Router.events.off('beforeHistoryChange', beforeHistoryChange);
-      Router.events.off('hashChangeComplete', hashChangeComplete);
-      Router.events.off('hashChangeStart', hashChangeStart);
-      Router.events.off('routeChangeComplete', routeChangeComplete);
-      Router.events.off('routeChangeError', routeChangeError);
+      // Router.events.off('beforeHistoryChange', beforeHistoryChange);
+      // Router.events.off('hashChangeComplete', hashChangeComplete);
+      // Router.events.off('hashChangeStart', hashChangeStart);
+      // Router.events.off('routeChangeError', routeChangeError);
       Router.events.off('routeChangeStart', routeChangeStart);
+      Router.events.off('routeChangeComplete', routeChangeComplete);
       Router.beforePopState(() => true);
       window.removeEventListener('beforeunload', onWindowBeforeUnload);
     };
