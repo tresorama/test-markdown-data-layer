@@ -20,4 +20,8 @@ ${args.map(item => "\n" + item + "\n").join('')}
     console.error(message);
     return message;
   }
+  errorAndThrow(...args: unknown[]) {
+    const message = this.error(...args);
+    throw new Error(message);
+  }
 }

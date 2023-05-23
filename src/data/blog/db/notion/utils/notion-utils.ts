@@ -1,9 +1,29 @@
-import { Client as NotionClient, isFullPage } from '@notionhq/client';
-import { PageObjectResponse, PartialPageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { type Client as NotionClient, isFullPage } from '@notionhq/client';
+import type { PageObjectResponse, PartialPageObjectResponse } from '@notionhq/client/build/src/api-endpoints';
+import { Logger } from '@/data/blog/utils/utils.logger';
 
-//
-// Generic Utils for getting data from notion
-//
+
+/**
+ * A wrapped for the `NotionClient` (of `@notionhq/client`) that simplify fetching data from Notion.  
+ * It includes a set of utils function that will interact with notion
+ * because notion api is no so well to read.
+ * *This packages (createNotionUtils) could be migrated to a NPM packae later on.*
+ * 
+ * Usage:
+ * ```ts
+ * import * as Notion from '@notionhq/client';
+ * import { createNotionUtils } from '...path/to/here';
+ * 
+ * const notionClient = new Notion.Client({ 
+ *   auth: process.env.NOTION_INTERNAL_INTEGRATION_TOKEN 
+ * });
+ * 
+ * const nu = createNotionUtils(notionClient);
+ * nu.getDatabaseRecords(...);
+ * nu.getPageById(...);
+ * ```
+ * @param notion NotionClient - A notion client from `@notionhq/client` package, already authorized.
+ */
 export const createNotionUtils = (notion: NotionClient) => {
 
   const getDatabaseRecords = async (database_id: string) => {
@@ -46,33 +66,3 @@ export const createNotionUtils = (notion: NotionClient) => {
   };
 
 };
-
-
-
-export class Logger {
-  key: string;
-  constructor(key: string) {
-    this.key = key;
-  }
-  buildMessage(status: 'error' | 'info', ...args: unknown[]) {
-    return `
-============ ${this.key} - ${status} - START ===========
-${args.map(item => "\n" + item + "\n").join('')}
-============ BlogPost Not Valid - END ===========
-    `.trimEnd();
-  }
-  log(...args: unknown[]) {
-    const message = this.buildMessage('info', ...args);
-    console.log(message);
-    return message;
-  }
-  error(...args: unknown[]) {
-    const message = this.buildMessage('error', ...args);
-    console.error(message);
-    return message;
-  }
-  errorAndThrow(...args: unknown[]) {
-    const message = this.error(...args);
-    throw new Error(message);
-  }
-}

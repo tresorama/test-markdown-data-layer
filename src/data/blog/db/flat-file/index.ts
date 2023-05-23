@@ -1,23 +1,22 @@
 import { readdirSync, readFileSync } from "fs";
 import path from "path";
 import matter from 'gray-matter';
-import { BlogPost, validateBlogPostOrThrow } from "@/utils/blog/blog.schema";
-import { compileMarkdownToHTMLString } from "@/utils/blog/utils/utils.markdown";
-import { capitalize } from "@/utils/blog/utils/utils.string";
-import { sortByDateDescending } from "@/utils/blog/utils/utils.sort";
-
-export { type BlogPost };
+import { compileMarkdownToHTMLString } from "@/data/blog/utils/utils.markdown";
+import { capitalize } from "@/data/blog/utils/utils.string";
+import { sortByDateDescending } from "@/data/blog/utils/utils.sort";
+import { type BlogPost, validateBlogPostOrThrow } from "@/data/blog/blog.schema";
+import { type BlogPostDatasource } from "@/data/blog/blog.datasource.types";
 
 // Utils for working with disk
 const getBlogDirPath = () => path.resolve(process.cwd(), "./src/blog-contents");
 const getAllBlogPostFileNames = () => readdirSync(getBlogDirPath()).map(filename => filename.replace('.md', ''));
 const getBlogPostFileBySlug = (slug: string) => readFileSync(`${getBlogDirPath()}/${slug}.md`);
 
-// Utils that should not be exposed as API
+// Utils 
 const getAllBlogPostSlugs = () => getAllBlogPostFileNames();
 
 // Public API for this datasource
-export const flatFileDB = {
+export const flatFileDB: BlogPostDatasource = {
   getAllBlogPost: async () => {
     const slugs = getAllBlogPostSlugs();
     const blogPosts: BlogPost[] = [];
@@ -28,7 +27,7 @@ export const flatFileDB = {
     }
     return blogPosts.sort((a, b) => sortByDateDescending(a.date, b.date));
   },
-  getBlogPostBySlug: async (slug: string): Promise<BlogPost | null> => {
+  getBlogPostBySlug: async (slug) => {
     const file = getBlogPostFileBySlug(slug);
     const metadata = matter(file.toString());
     const markdownAsString = metadata.content;

@@ -17,6 +17,10 @@ const blogPostSchema = z.object({
   }),
 });
 
+/**
+ * The `BlogPost` type used in the "view" side of the app.
+ * Every `BlogPostDatasource` must returns this type when used.
+ */
 export type BlogPost = z.infer<typeof blogPostSchema>;
 
 // Validation

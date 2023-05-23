@@ -5,6 +5,10 @@ import { sortByDateDescending } from "./utils/utils.sort";
 export { type BlogPost };
 
 // Public API for fetching data
+// This is the API that the "view" will use at build 
+// time, when fetching blogpost and creatinf all static pages
+// This API is meant oto be consumed by a Node.js env.
+
 export const getAllBlogPostSlugs = async (): Promise<BlogPost['slug'][]> => {
   const blogPosts = await db.getAllBlogPost();
   return blogPosts
