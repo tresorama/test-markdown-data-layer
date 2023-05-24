@@ -1,5 +1,5 @@
 import { type BlogPost } from "./blog.schema";
-import { db } from './blog.datasource';
+import { getDB } from './blog.datasource';
 import { sortByDateDescending } from "./utils/utils.sort";
 
 export { type BlogPost };
@@ -10,6 +10,7 @@ export { type BlogPost };
 // This API is meant oto be consumed by a Node.js env.
 
 export const getAllBlogPostSlugs = async (): Promise<BlogPost['slug'][]> => {
+  const db = await getDB();
   const blogPosts = await db.getAllBlogPost();
   return blogPosts
     .sort((a, b) => sortByDateDescending(a.date, b.date))
@@ -17,11 +18,13 @@ export const getAllBlogPostSlugs = async (): Promise<BlogPost['slug'][]> => {
 };
 
 export const getAllBlogPosts = async (): Promise<BlogPost[]> => {
+  const db = await getDB();
   const blogPosts = await db.getAllBlogPost();
   return blogPosts.sort((a, b) => sortByDateDescending(a.date, b.date));
 };
 
 export const getBlogPostBySlug = async (slug: BlogPost['slug']) => {
+  const db = await getDB();
   return db.getBlogPostBySlug(slug);
 };
 
