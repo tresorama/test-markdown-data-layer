@@ -1,15 +1,5 @@
 # Datasource - Flat File in Disk
 
-## Overview
-
-When you are initializing the project you:
-- Define your blog post front-matter custom fields schema
-- Code in React to customize appearance.
-
-When you have a new blogpost to add:
-- Create a new `.md` file inside a specific folder.
-- Re-Deploy
-
 ## Configuration
 
 You should have completed the "datasource agnostic" initial setup and be redirected here to perform additional configiration.  
@@ -36,6 +26,15 @@ These are versions used when creating this project
 
 #### 2. Create a blogpost folder
 
-Move `src/utils/blog/db/flat-file/example/blog-contents` directory to `src`.  
+Move `src/data/blog/db/flat-file/example/blog-contents` directory to `src`.  
 At the end you will have `src/blog-contents`.  
 Inside that folder you have some example of blog post to start with.  
+> IMPORTANT: Do not move or rename `src/blog-contents` directory or the fetching code will not be able to read your blogposts.
+
+### 3. Add env vars
+
+Copy `src/data/blog/db/flat-file/.env.flat-file.example` file in the root of the project and rename it as `.env.local`.  
+Fill the missing env following the instruction that you can find inside the template duplicated at the previous step.
+
+> NOTE: 
+> In local development `.env.local` is used as source, but in producction you must define these vars in your Deploy Service (Netlify/Vercel) as Environment Variables.

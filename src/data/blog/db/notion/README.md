@@ -1,30 +1,20 @@
 # Datasource - Notion
 
-## Overview
-
-When you are initializing the project you:
-- Define your blog post front-matter custom fields schema
-- Code in React to customize appearance.
-
-When you have a new blogpost to add:
-- Create a new `.md` file inside a specific folder.
-- Re-Deploy
-
 ## Configuration
 
 You should have completed the "datasource agnostic" initial setup and be redirected here to perform additional configiration.  
 In case you did't , [start here](../../../../../README.md).
 
-### Additional Configration
+## Additional Configration
 
-#### Overview
+### Overview
 
 1. Install needed packages
 2. Creata a Notion database
 3. Create a Notion Integration for this app
 4. Add env vars
 
-#### 1. Install needed Packages
+### 1. Install needed Packages
 
 ```bash
 yarn add @notionhq/client notion-to-md
@@ -37,16 +27,15 @@ These are versions used when creating this project
 "notion-to-md": "^2.5.5",
 ```
 
-#### 2. Creata a Notion database
+### 2. Creata a Notion database
 
-TODO
+Duplicate this [Notion page](https://elastic-cymbal-9af.notion.site/starter-next-blog-DEMO-NOTION-DATABASE-e70f32d503614367a9f714854dc898aa) that contains a stater blogpost database.  
+It includes also information of how to get extra necessary data from Notion-side.
 
-#### 3. Create a Notion Integration for this app
+### 3. Add env vars
 
-TODO
+Copy `src/data/blog/db/notion/.env.notion.example` file in the root of the project and rename it as `.env.local`.  
+Fill the missing env following the instruction that you can find inside the template duplicated at the previous step.
 
-#### 4. Add env vars
-
-Go in `src/utils/blog/db/notion/.env.notion.example`.  
-Inside you find which env vars are needed and how to get them.
-Add env vars to `.env.local` (in development) and in your Deploy Service (Netlify/Vercel) when in production.
+> NOTE: 
+> In local development `.env.local` is used as source, but in producction you must define these vars in your Deploy Service (Netlify/Vercel) as Environment Variables.
