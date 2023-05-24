@@ -29,6 +29,8 @@ When you have a new blogpost to add:
   - Notion: Create a new Notion record/page in your Database
 - Re-Deploy
 
+---
+
 ## Usage - Dev
 
 Install deps
@@ -71,6 +73,7 @@ yarn start
 # or 
 npm run start
 ```
+---
 
 ## How to bootstrap the project
 
@@ -111,20 +114,11 @@ Now thanks to typescript, your React views receive blogposts that are typesafe.
 
 ### 2. Decide which datasource you want to use
 
-#### 2.1 Overview
+You must define a `DATASOURCE` env var, that will be used to dynamcally import the desired Datasource Fetching code.  
 
-You must define a `DATASOURCE` env var, that will be used to dynamcally import the desired Datasource Fetching code.
-Depending on datasource type you should provide additional env var. More on this later.  
+Depending on datasource type you should provide additional env var. More on this later...  
 
-#### 2.2 Setup
-
-Define the `DATASOURCE` env var based on you r datasource choice
-```bash
-DATASOURCE=FLATFILEMD # for flat file markdown
-DATASOURCE=NOTION # for Notion
-```
-
-Follow additional setup instruction base on your Datasource choice.
+Follow instructions bases on your Datasource choice.
 - [Flat File](./src/data/blog/db/flat-file/README.md)
 - [Notion](./src/data/blog/db/notion/README.md)
 
@@ -132,6 +126,8 @@ Follow additional setup instruction base on your Datasource choice.
 
 You know how to do it 😜.  
 Pages are in `src/pages` and components used in pages are in `src/views`.
+
+---
 
 ## Resources
 
