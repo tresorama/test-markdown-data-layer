@@ -1,10 +1,11 @@
 ---
-title: 'Dynamic Routing and Static Generation'
-coverImage: '/assets/blog/dynamic-routing/cover.jpg'
-date: '2021-02-24T05:35:07.322Z'
+slug: preview-mode-for-ssg
+title: 'Preview Mode for Static Generation'
+coverImage: '/assets/blog/preview/cover.jpg'
+date: '2020-03-16T05:35:07.322Z'
 author:
   name: Jacopo Marrone
-  picture: '/assets/blog/authors/jj.jpeg'
+  picture: '/assets/blog/authors/joe.jpeg'
 excerpt: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Praesent elementum facilisis leo vel fringilla est ullamcorper eget. At imperdiet dui accumsan sit amet nulla facilities morbi tempus.'
 ---
 

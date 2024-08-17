@@ -1,4 +1,5 @@
 ---
+slug: markdown-example
 title: Markdown Example
 coverImage: '/assets/blog/dynamic-routing/cover.jpg'
 date: '2022-08-27T05:35:07.322Z'

@@ -1,0 +1,17 @@
+{
+  "name": "@apps/node",
+  "private": true,
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "author": "Jacopo Marrone <@tresorama> (https://github.com/tresorama)",
+  "license": "MIT",
+  "dependencies": {
+    "markdown-data-layer": "^0.0.1",
+    "vite-node": "^2.0.5",
+    "vitest": "^2.0.5"
+  }
+}
