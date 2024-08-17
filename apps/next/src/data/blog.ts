@@ -11,7 +11,7 @@ const getFilePathFromRoot = (relativePath: string) => path.resolve(process.cwd()
 const blogCollection = createCollection({
   slug: 'blog',
   db: createDb_Flatfile({
-    dirPath: getFilePathFromRoot("src/data/blog"),
+    dirPath: getFilePathFromRoot("src/data/contents/blog"),
   }),
   schema: (baseSchema) => baseSchema.extend({
     /* Add here your front-matter markdown custom fields */
