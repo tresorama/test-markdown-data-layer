@@ -1,7 +1,7 @@
 import { z } from "zod";
-import { createCollection } from "markdown-data-layer/src/create-collection";
-import { createDb_Notion, createNotionClient } from "markdown-data-layer/src/create-db/notion";
-import { sortByDateDescending } from "markdown-data-layer/src/utils.sort";
+import { createCollection } from "markdown-data-layer/dist/create-collection";
+import { createDb_Notion, createNotionClient } from "markdown-data-layer/dist/create-db/notion";
+import { sortByDateDescending } from "markdown-data-layer/dist/utils.sort";
 
 
 // notion client
