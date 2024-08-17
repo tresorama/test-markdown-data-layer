@@ -3,7 +3,8 @@ import { compileMarkdownToHTMLString } from "../../utils.markdown";
 import { type createNotionClient } from "./create-notion-client";
 import { type NotionUtils } from "./notion-utils";
 
-export const createDb_Notion = <ExtraFields extends Record<string, unknown>>({
+type ExtraFields = { [key: string]: any; };
+export const createDb_Notion = ({
   notionClient,
   databaseId,
   dataExtractor,
@@ -53,8 +54,8 @@ export const createDb_Notion = <ExtraFields extends Record<string, unknown>>({
 
     const item = {
       // required fields
-      slug: nu.getPageProperty(notionPage, 'slug'),
-      title: nu.getPageProperty(notionPage, 'title'),
+      slug: nu.getPageProperty(notionPage, 'slug') as string,
+      title: nu.getPageProperty(notionPage, 'title') as string,
       contentAsHTMLString,
       // custom fields
       ...(dataExtractor(notionPage, nu)),
@@ -73,7 +74,7 @@ export const createDb_Notion = <ExtraFields extends Record<string, unknown>>({
       // every "blog post" is a notion page, with an id defined by notion
       // every "blog post" page is a child of the database named "blogpost"
       const pageIds = await getAllItemNotionPageIds();
-      const items = await Promise.all(
+      const items: Item[] = await Promise.all(
         pageIds.map(pageId => convertFileToItem(pageId))
       );
       return items;
